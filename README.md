@@ -18,6 +18,32 @@ This library supports C, C++ and Python for extended user support and seamless i
 | Image | ![Single Tag](/media/single_tag.jpg) | ![Multiple Tags](/media/multiple_tags.jpg) |
 | Video | ![Single Tag](/media/single_tag.gif) | ![Multiple Tags](/media/multiple_tags.gif) |
 
+## MAPPING LIMITATIONS AND APRILTAG SPECIFICATIONS
+
+### AprilTag Size
+- Recommended tag size: 16cm x 16cm for optimal detection at 0.5-3m range
+- Minimum size: 8cm x 8cm for reliable detection at close range (0.3-1.5m)
+- Border width: Must be at least 1 (default) for accurate pose estimation
+
+### Mapping Limitations
+- Maximum detection distance: ~3 meters (depends on tag size and lighting conditions)
+- Field of view: Tags should be within camera's FOV and not severely occluded
+- Lighting conditions: Requires good and consistent lighting for reliable detection
+- Multi-tag mapping:
+  - Recommended tag separation: At least 30cm between tag centers
+  - Maximum number of simultaneous tags: Depends on processing power, typically 10-15 tags
+  - Tag visibility: At least 2 tags should be visible for reliable map frame building
+
+### Best Practices
+- Ensure tags are mounted on flat, rigid surfaces
+- Avoid placing tags on reflective surfaces
+- Maintain consistent lighting conditions
+- Keep tags clean and free from damage
+- For map building: 
+  - Use larger tags (16cm x 16cm) for better accuracy
+  - Ensure proper tag spacing for reliable detection
+  - Consider tag ID sequence for logical mapping (e.g., 1,2,3 for sequential positioning)
+
 ## DEPENDENCIES
 
 `OpenCV` (optional) - Note that the C library will compile successfully without this dependency. However, it is required in order to run certain example/demo code.
