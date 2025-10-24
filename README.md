@@ -100,7 +100,7 @@ Usage: ./apriltag_demo [options] <input files>
 ```
 Example:
 ```bash
-$ cd ~/AprilTag/build/bin
+$ cd ~/AprilTag-ROS-2-camera/build/bin
 $ ./apriltag_demo ../../media/input/*.pnm
 ```
 
@@ -127,7 +127,7 @@ Usage: ./apriltag_opencv_demo [options] <input files>
 ```
 Example:
 ```bash
-$ cd ~/AprilTag/build/bin
+$ cd ~/AprilTag-ROS-2-camera/build/bin
 $ ./apriltag_opencv_demo ../../media/input/*.jpg
 ```
 
@@ -148,7 +148,7 @@ Usage: ./apriltag_image [options] <path to image file>
 ```
 Examples:
 ```bash
-$ cd ~/AprilTag/build/bin
+$ cd ~/AprilTag-ROS-2-camera/build/bin
 $ ./apriltag_image ../../media/input/single_tag.jpg
 $ ./apriltag_image ../../media/input/multiple_tags.jpg
 ```
@@ -170,7 +170,7 @@ Usage: ./apriltag_video [options] <camera index or path to movie file>
 ```
 Examples:
 ```bash
-$ cd ~/AprilTag/build/bin
+$ cd ~/AprilTag-ROS-2-camera/build/bin
 $ ./apriltag_video 0
 $ ./apriltag_video ../../media/input/single_tag.mp4
 $ ./apriltag_video ../../media/input/multiple_tags.mp4
@@ -227,7 +227,7 @@ Note that you must build the software per the instructions above before the Pyth
 - Usage:
   
   ```bash
-  $ cd ~/AprilTag/scripts
+  $ cd ~/AprilTag-ROS-2-camera/scripts
   $ python3 apriltag_image.py
   ```
   
@@ -247,7 +247,7 @@ Note that you must build the software per the instructions above before the Pyth
 - Usage:
   
   ```bash
-  $ cd ~/AprilTag/scripts
+  $ cd ~/AprilTag-ROS-2-camera/scripts
   $ python3 apriltag_video.py
   ```
 
