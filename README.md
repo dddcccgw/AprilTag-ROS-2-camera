@@ -50,19 +50,19 @@ This library supports C, C++ and Python for extended user support and seamless i
 
 ## SETUP
 
-1. Clone this `AprilTag` repository to your local machine.
+1. Clone this `AprilTag-ROS-2-camera` repository to your local machine.
     ```bash
-    $ git clone https://github.com/Tinker-Twins/AprilTag.git
+    $ git clone [https://github.com/Tinker-Twins/AprilTag.git](https://github.com/dddcccgw/AprilTag-ROS-2-camera.git)
     ```
 2. Install the library (build the source code) using the `install.sh` shell script (requires [CMake](https://cmake.org/)).
     ```bash
-    $ cd ~/AprilTag
+    $ cd ~/AprilTag-ROS-2-camera
     $ ./install.sh
     ```
   
     _**Note:** To uninstall (clean) and rebuild the entire source code, use the the `uninstall.sh` and `install.sh` shell scripts._
     ```bash
-    $ cd ~/AprilTag
+    $ cd ~/AprilTag-ROS-2-camera
     $ ./uninstall.sh
     $ ./install.sh
     ```
