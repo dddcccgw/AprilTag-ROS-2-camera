@@ -1,262 +1,81 @@
-# AprilTag
+# 🧭 AprilTag Pose Estimation using Intel RealSense D435
 
-![Github Stars](https://badgen.net/github/stars/Tinker-Twins/AprilTag?icon=github&label=stars)
-![Github Forks](https://badgen.net/github/forks/Tinker-Twins/AprilTag?icon=github&label=forks)
+This repository provides a **standalone Python implementation** for real-time **AprilTag detection and 6DoF pose estimation** using an **Intel RealSense D435** RGB-D camera.
 
-### AprilTag Detection and Pose Estimation Library for C, C++ and Python
-### Robot Operating System (ROS): [ROS 1](https://github.com/Tinker-Twins/AprilTag-ROS-1) and [ROS 2](https://github.com/Tinker-Twins/AprilTag-ROS-2) Packages
+It is **based on and inspired by** the original [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2) project — a ROS 2-based AprilTag detection package.  
+This fork adapts their work into a **non-ROS**, lightweight Python pipeline for easier use in computer vision or robotics projects.
 
-<p align="justify">
-This repository hosts the C library for AprilTag, a visual fiducial system popular in robotics research. It can be used to develop high performance software for autonomous systems pertaining to perception, localization, mapping, SLAM as well as extended reality applications.
-</p>
-<p align="justify">
-This library supports C, C++ and Python for extended user support and seamless integration with existing software. It is capable of detecting and tracking single as well as multiple tags and computing their pose (homogeneous transformation matrix) w.r.t. camera in real-time.
-</p>
+---
 
-| Type | Single Tag | Multiple Tags |
-| :---:| :--------: | :-----------: |
-| Image | ![Single Tag](/media/single_tag.jpg) | ![Multiple Tags](/media/multiple_tags.jpg) |
-| Video | ![Single Tag](/media/single_tag.gif) | ![Multiple Tags](/media/multiple_tags.gif) |
+## 🚀 Key Contributions
 
-## MAPPING LIMITATIONS AND APRILTAG SPECIFICATIONS
+### 🔧 What’s New in This Version
+- ✅ **Standalone Python script** (no ROS2 dependency)  
+- ✅ Direct **Intel RealSense D435** integration using `pyrealsense2`  
+- ✅ Real-time **pose visualization** with 3D axes and text overlays  
+- ✅ Displays **depth, translation, and Euler rotation**  
+- ✅ Simplified structure for research and prototyping use
 
-### AprilTag Size
-- Recommended tag size: 16cm x 16cm for optimal detection at 0.5-3m range
-- Minimum size: 8cm x 8cm for reliable detection at close range (0.3-1.5m)
-- Border width: Must be at least 1 (default) for accurate pose estimation
+### 🔗 Credit
+Original AprilTag detection logic and structure inspired by:  
+👉 [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2)
 
-### Mapping Limitations
-- Maximum detection distance: ~3 meters (depends on tag size and lighting conditions)
-- Field of view: Tags should be within camera's FOV and not severely occluded
-- Lighting conditions: Requires good and consistent lighting for reliable detection
-- Multi-tag mapping:
-  - Recommended tag separation: At least 30cm between tag centers
-  - Maximum number of simultaneous tags: Depends on processing power, typically 10-15 tags
-  - Tag visibility: At least 2 tags should be visible for reliable map frame building
+All credit to the Tinker-Twins team for their foundational ROS2 implementation.
 
-### Best Practices
-- Ensure tags are mounted on flat, rigid surfaces
-- Avoid placing tags on reflective surfaces
-- Maintain consistent lighting conditions
-- Keep tags clean and free from damage
-- For map building: 
-  - Use larger tags (16cm x 16cm) for better accuracy
-  - Ensure proper tag spacing for reliable detection
-  - Consider tag ID sequence for logical mapping (e.g., 1,2,3 for sequential positioning)
+---
 
-## DEPENDENCIES
+## 📦 Requirements
 
-`OpenCV` (optional) - Note that the C library will compile successfully without this dependency. However, it is required in order to run certain example/demo code.
-
-## SETUP
-
-1. Clone this `AprilTag-ROS-2-camera` repository to your local machine.
-    ```bash
-    $ git clone https://github.com/dddcccgw/AprilTag-ROS-2-camera.git
-    ```
-2. Install the library (build the source code) using the `install.sh` shell script (requires [CMake](https://cmake.org/)).
-    ```bash
-    $ cd ~/AprilTag-ROS-2-camera
-    $ ./install.sh
-    ```
-  
-    _**Note:** To uninstall (clean) and rebuild the entire source code, use the the `uninstall.sh` and `install.sh` shell scripts._
-    ```bash
-    $ cd ~/AprilTag-ROS-2-camera
-    $ ./uninstall.sh
-    $ ./install.sh
-    ```
-3. Calibrate your camera and note its intrinsic parameters `fx, fy, cx, cy`. You might find [this](https://github.com/Tinker-Twins/Camera-Calibration) repository helpful.
-
-> [!NOTE]
-> Refer to [this](https://youtu.be/fZ92_VMxxyo) video for a step-by-step installation and usage tutorial.
-
-## USAGE
-
-<p align="justify">
-Once the C/C++ source code is built, the executables and Python wrapper can be executed in order to run detections on image(s) or video stream(s). Following are some examples/demos of utilizing this library.
-</p>
-
-### C
-
-#### Executable: `apriltag_demo`
+### Python 3.8+
+Install dependencies via pip:
 
 ```bash
-Usage: ./apriltag_demo [options] <input files>
-  -h | --help           [ true ]       Show this help   
-  -d | --debug          [ false ]      Enable debugging output (slow)   
-  -q | --quiet          [ false ]      Reduce output   
-  -f | --family         [ tag36h11 ]   Tag family to use   
-       --border         [ 1 ]          Set tag family border size   
-  -i | --iters          [ 1 ]          Repeat processing this many times   
-  -t | --threads        [ 4 ]          Use this many CPU threads   
-  -x | --decimate       [ 1.0 ]        Decimate input image by this factor   
-  -b | --blur           [ 0.0 ]        Apply low-pass blur to input   
-  -0 | --refine-edges   [ true ]       Spend more time aligning edges of tags   
-  -1 | --refine-decode  [ false ]      Spend more time decoding tags   
-  -2 | --refine-pose    [ false ]      Spend more time computing pose of tags   
-  -c | --contours       [ false ]      Use new contour-based quad detection   
-  -B | --benchmark      [ false ]      Benchmark mode
-```
-Example:
-```bash
-$ cd ~/AprilTag-ROS-2-camera/build/bin
-$ ./apriltag_demo ../../media/input/*.pnm
-```
+pip install opencv-python pyrealsense2 numpy dt-apriltags scipy
+💡 For Intel RealSense cameras, make sure Intel RealSense SDK 2.0 is installed:
+https://www.intelrealsense.com/sdk-2/
 
-### C++
+⚙️ Configuration
+Parameter	Description	Default
+TAG_SIZE	AprilTag physical size (meters)	0.1
+FRAME_WIDTH, FRAME_HEIGHT	Frame resolution	640x480
+FPS	Frame rate	30
+families	AprilTag family	"tag36h11"
 
-#### Executable: `apriltag_opencv_demo`
-```bash
-Usage: ./apriltag_opencv_demo [options] <input files>
-  -h | --help           [ true ]       Show this help   
-  -d | --debug          [ false ]      Enable debugging output (slow)   
-  -q | --quiet          [ false ]      Reduce output   
-  -f | --family         [ tag36h11 ]   Tag family to use   
-       --border         [ 1 ]          Set tag family border size   
-  -i | --iters          [ 1 ]          Repeat processing this many times   
-  -t | --threads        [ 4 ]          Use this many CPU threads   
-  -x | --decimate       [ 1.0 ]        Decimate input image by this factor   
-  -b | --blur           [ 0.0 ]        Apply low-pass blur to input   
-  -0 | --refine-edges   [ true ]       Spend more time aligning edges of tags   
-  -1 | --refine-decode  [ false ]      Spend more time decoding tags   
-  -2 | --refine-pose    [ false ]      Spend more time computing pose of tags   
-  -c | --contours       [ false ]      Use new contour-based quad detection   
-  -n | --no-gui         [ false ]      Suppress GUI output from OpenCV   
-  -B | --benchmark      [ false ]      Benchmark mode (assumes -n)
-```
-Example:
-```bash
-$ cd ~/AprilTag-ROS-2-camera/build/bin
-$ ./apriltag_opencv_demo ../../media/input/*.jpg
-```
+▶️ Usage
+Connect your Intel RealSense D435.
 
-#### Executable: `apriltag_image`
-```bash
-Usage: ./apriltag_image [options] <path to image file>
-  -h | --help           [ true ]       Show this help   
-  -q | --quiet          [ false ]      Reduce output   
-  -f | --family         [ tag36h11 ]   Tag family to use   
-       --border         [ 1 ]          Set tag family border size   
-  -t | --threads        [ 4 ]          Use this many CPU threads   
-  -x | --decimate       [ 1.0 ]        Decimate input image by this factor   
-  -b | --blur           [ 0.0 ]        Apply low-pass blur to input   
-  -0 | --refine-edges   [ true ]       Spend more time aligning edges of tags   
-  -1 | --refine-decode  [ true ]       Spend more time decoding tags   
-  -2 | --refine-pose    [ true ]       Spend more time computing pose of tags   
-  -c | --contours       [ true ]       Use new contour-based quad detection
-```
-Examples:
-```bash
-$ cd ~/AprilTag-ROS-2-camera/build/bin
-$ ./apriltag_image ../../media/input/single_tag.jpg
-$ ./apriltag_image ../../media/input/multiple_tags.jpg
-```
+Run the script:
 
-#### Executable: `apriltag_video`
-```bash
-Usage: ./apriltag_video [options] <camera index or path to movie file>
-  -h | --help           [ true ]       Show this help   
-  -q | --quiet          [ false ]      Reduce output   
-  -f | --family         [ tag36h11 ]   Tag family to use   
-       --border         [ 1 ]          Set tag family border size   
-  -t | --threads        [ 4 ]          Use this many CPU threads   
-  -x | --decimate       [ 1.0 ]        Decimate input image by this factor   
-  -b | --blur           [ 0.0 ]        Apply low-pass blur to input   
-  -0 | --refine-edges   [ true ]       Spend more time aligning edges of tags   
-  -1 | --refine-decode  [ false ]      Spend more time decoding tags   
-  -2 | --refine-pose    [ false ]      Spend more time computing pose of tags   
-  -c | --contours       [ false ]      Use new contour-based quad detection
-```
-Examples:
-```bash
-$ cd ~/AprilTag-ROS-2-camera/build/bin
-$ ./apriltag_video 0
-$ ./apriltag_video ../../media/input/single_tag.mp4
-$ ./apriltag_video ../../media/input/multiple_tags.mp4
-```
+bash
+Copy code
+python apriltag_realsense_pose.py
+View the live feed with detected AprilTags and pose information.
 
-### Python
+Press Q to quit.
 
-<p align="justify">
-Note that you must build the software per the instructions above before the Python wrapper can be used. If you did not install the libraries to the system-wide library directory and you are not running Python code from the <code>scripts</code> directory in this repository, your Python code must specify the path for the apriltag shared library when constructing an <code>apriltag.Detector</code> object.
-</p>
+🧩 Example Output
+yaml
+Copy code
+Tag ID: 2
+Pos (m): X=0.03 Y=-0.02 Z=0.45
+Rot (deg): R=1.2 P=-3.5 Y=88.7
+Depth: 0.448m
+Axes:
 
-#### Script: `apriltag.py`
+Red → X-axis
 
-- `class Detector()`
-  
-  <p align="justify">
-  Python class for AprilTag detector. Initialize by passing in the output of an <code>argparse.ArgumentParser</code> on which you have called
-  <code>add_arguments</code>; or an instance of the <code>DetectorOptions</code> class.  You can also optionally pass in a list of paths to
-  search for the C dynamic library used by ctypes.
-  </p>
-  
-- `function detect_tags()`
+Green → Y-axis
 
-  Detect AprilTags from image.
+Blue → Z-axis
 
-  ```
-  Args:   image [image]: Input image to run detection algorithm on
-          detector [detector]: AprilTag Detector object
-          camera_params [_camera_params]: Intrinsic parameters for camera (fx, fy, cx, cy)
-          tag_size [float]: Physical size of tag in user defined units (m or mm recommended)
-          vizualization [int]: 0 - Highlight
-                               1 - Highlight + Boxes
-                               2 - Highlight + Axes
-                               3 - Highlight + Boxes + Axes
-          verbose [int]: 0 - Silent
-                         1 - Number of detections
-                         2 - Detection data
-                         3 - Detection and pose data
-          annotation [bool]: Render annotated text on detection window
-  ```
+🧪 Tested Setup
+Component	Version
+Intel RealSense	D435
+RealSense SDK	2.55+
+Python	3.10
+OpenCV	4.10+
+dt-apriltags	1.0.4+
 
-#### Script: `apriltag_image.py`
-
-- `function apriltag_image()`
-
-  Detect AprilTags from static images.
-
-  ```
-  Args:   input_images [list(str)]: List of images to run detection algorithm on
-          output_images [bool]: Boolean flag to save/not images annotated with detections
-          display_images [bool]: Boolean flag to display/not images annotated with detections
-          detection_window_name [str]: Title of displayed (output) tag detection window
-  ```
-- Usage:
-  
-  ```bash
-  $ cd ~/AprilTag-ROS-2-camera/scripts
-  $ python3 apriltag_image.py
-  ```
-  
-
-#### Script: `apriltag_video.py`
-
-- `function apriltag_video()`
-
-  Detect AprilTags from video stream.
-
-  ```
-  Args:   input_streams [list(int/str)]: Camera index or movie name to run detection algorithm on
-          output_stream [bool]: Boolean flag to save/not stream annotated with detections
-          display_stream [bool]: Boolean flag to display/not stream annotated with detections
-          detection_window_name [str]: Title of displayed (output) tag detection window
-  ```
-- Usage:
-  
-  ```bash
-  $ cd ~/AprilTag-ROS-2-camera/scripts
-  $ python3 apriltag_video.py
-  ```
-
-## DEMO
-
-Implementation demonstrations are available on [YouTube](https://youtu.be/cG5c2yfupLI).
-
-## ACKNOWLEDGEMENT
-
-The development of this library and the examples has been hugely inspired by the following sources:
-- https://github.com/AprilRobotics/apriltag
-- https://github.com/swatbotics/apriltag
+📄 License
+This project is released under the MIT License.
+Please also refer to the license in Tinker-Twins/AprilTag-ROS-2 for their original work.
