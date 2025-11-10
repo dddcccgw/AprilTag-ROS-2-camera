@@ -24,7 +24,8 @@ This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://g
 - *Detection status: "Detected: 3/3 tags"*
 - *Map frame established with Tag 0 as the origin*
 
-![Map Frame Terminal Output](my_camera_apriltag_terminal.png)
+![Map Frame Terminal Output](my_camera_apriltag.png)   
+
 *Terminal output showing map frame status with final saved data including all tag positions and rotations. The program exports data to `apriltag_map.json` when exiting with 'Q'*
 
 ---
@@ -36,7 +37,7 @@ This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://g
 ---
 
 ### ✅ Program: `camera_position_validation.py` - Position Validator
-![Position Validation Pass](cameraposition_validator.png)
+![Position Validation Pass](camera-position_validator.png)
 *Position validation showing ALL CHECKS PASSED with detailed error metrics:*
 - *Camera position validated: [-0.0814, 0.0493, -0.5819] m with 14.41 mm error ✓*
 - *Tag 0 [ORIGIN]: Perfect match at (0.000, 0.000, 0.000) m*
