@@ -122,11 +122,5 @@ Please also respect the license of the original [Tinker-Twins/AprilTag-ROS-2](ht
 ⭐ If this project helps you, please star both:
 
 * [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2)
-* Your forked repository
+* [This repository](https://github.com/dddcccgw/AprilTag-ROS-2-camera/tree/feature/my_submodule)
 
-```
-
----
-
-Would you like me to include a short section comparing your **Python version vs. the original ROS 2 version** (like a “Key Differences” table)? That’s a nice touch for forks.
-```
