@@ -1,0 +1,14 @@
+/**:
+  ros__parameters:
+    # Debug logging
+    debug: false
+    
+    # Node configuration
+    node_name: "my_submodule"
+    
+    # Timer period in milliseconds
+    timer_period_ms: 100
+    
+    # Input/Output topics
+    input_topic: "image_raw"
+    output_topic: "output"
