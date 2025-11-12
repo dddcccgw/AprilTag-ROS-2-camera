@@ -113,7 +113,7 @@ Please also respect the license of the original [Tinker-Twins/AprilTag-ROS-2](ht
 
 ## 👨‍💻 Author
 
-**Your Name**
+**David Chen**
 📧 [[gwchen24@gmail.com](mailto:your.email@example.com)]
 💼 [https://github.com/dddcccgw]
 
@@ -122,5 +122,5 @@ Please also respect the license of the original [Tinker-Twins/AprilTag-ROS-2](ht
 ⭐ If this project helps you, please star both:
 
 * [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2)
-* [This repository](https://github.com/dddcccgw/AprilTag-ROS-2-camera/tree/feature/my_submodule)
+* [dddcccgw/AprilTag-ROS-2-camera/tree/ros-package-node)]([https://github.com/dddcccgw/AprilTag-ROS-2-camera/tree/feature/my_submodule](https://github.com/dddcccgw/AprilTag-ROS-2-camera/tree/ros-package-node))
 
