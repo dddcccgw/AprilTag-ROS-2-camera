@@ -1,12 +1,11 @@
-# 🧭 AprilTag Multi-Tag Tracking & Map Frame Estimation
+#  AprilTag Multi-Tag Tracking & Map Frame Estimation
 
 A standalone Python implementation for **multi-AprilTag detection**, **6DoF pose estimation**, and **map coordinate frame construction** using an Intel RealSense D435 RGB-D camera.
 
-This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2) — a ROS 2-based AprilTag detection package. This fork adapts their system into a **non-ROS, lightweight Python tool** with advanced multi-tag tracking and spatial mapping capabilities.
 
 ---
 
-## 📸 Screenshots & Setup
+##  Screenshots & Setup
 
 ### 🔧 Physical Setup
 ![Physical Setup](setup.png)
@@ -14,7 +13,7 @@ This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://g
 
 ---
 
-### 🎯 Program: `my_camera_apriltag.py` - Multi-Tag Tracking & Map Frame
+###  Program: `my_camera_apriltag.py` - Multi-Tag Tracking & Map Frame
 ![AprilTag Map Frame Visualization](my_camera_apriltag.png)
 *Real-time multi-tag tracking showing 3 AprilTags with map frame coordinate system. Features include:*
 - *Live camera feed with detected tags (ID 0, 1, 2) highlighted with colored borders*
@@ -24,19 +23,20 @@ This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://g
 - *Detection status: "Detected: 3/3 tags"*
 - *Map frame established with Tag 0 as the origin*
 
-![Map Frame Terminal Output](my_camera_apriltag.png)   
+
 
 *Terminal output showing map frame status with final saved data including all tag positions and rotations. The program exports data to `apriltag_map.json` when exiting with 'Q'*
 
 ---
 
-### 📊 Program: `record_calibration_data.py` - Hand-Eye Calibration
+###  Program: `record_calibration_data.py` - Hand-Eye Calibration
 ![Calibration Data Recording](record_calibration_data.png)
+
 *Interactive hand-eye calibration data collection showing synchronized camera-tag poses and robot end-effector positions for computing camera-to-robot transformation*
 
 ---
 
-### ✅ Program: `camera_position_validation.py` - Position Validator
+###  Program: `camera_position_validation.py` - Position Validator
 ![Position Validation Pass](camera-position_validator.png)
 *Position validation showing ALL CHECKS PASSED with detailed error metrics:*
 - *Camera position validated: [-0.0814, 0.0493, -0.5819] m with 14.41 mm error ✓*
@@ -48,9 +48,9 @@ This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://g
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
-### ✨ Advanced Capabilities
+###  Advanced Capabilities
 - **Multi-Tag Tracking**: Simultaneously detect and track multiple AprilTags (configurable IDs)
 - **Map Frame Construction**: Establish a global coordinate system using one tag as the origin
 - **Relative Position Calculation**: Compute 3D positions of all tags relative to the map origin
@@ -62,30 +62,14 @@ This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://g
   - Color-coded tags (origin vs. tracked tags)
 - **Data Export**: Save final map data to JSON file with all tag positions and orientations
 
-### 🎯 Technical Highlights
+###  Technical Highlights
 - Intel RealSense D435 RGB-D integration
 - Image preprocessing for robust detection (histogram equalization, Gaussian blur)
 - Configurable detection parameters for accuracy vs. speed trade-off
 - Comprehensive error handling and validation
 - Clean terminal output with periodic status updates
 
----
-
-## 🆚 Key Differences from Original
-
-| Feature | Original (ROS 2) | This Fork (Python Standalone) |
-|---------|------------------|-------------------------------|
-| **Dependencies** | ROS 2 + multiple packages | Pure Python (no ROS required) |
-| **Multi-Tag Tracking** | Single tag focus | Multiple tags simultaneously |
-| **Map Frame** | ❌ Not supported | ✅ Global coordinate system |
-| **Relative Positioning** | ❌ Not supported | ✅ Tag-to-tag spatial relationships |
-| **Temporal Filtering** | ❌ Not included | ✅ Pose smoothing built-in |
-| **Data Export** | ROS messages | JSON file with full map data |
-| **Setup Complexity** | High (ROS workspace) | Low (pip install only) |
-
----
-
-## 📦 Requirements
+##  Requirements
 
 ### Hardware
 - **Intel RealSense D435** RGB-D Camera
@@ -101,11 +85,11 @@ This project is based on and inspired by [Tinker-Twins/AprilTag-ROS-2](https://g
 pip install opencv-python pyrealsense2 numpy dt-apriltags scipy
 ```
 
-> 💡 **Windows Users**: Download and install [Intel RealSense SDK 2.0](https://github.com/IntelRealSense/librealsense/releases) first.
+>  **Windows Users**: Download and install [Intel RealSense SDK 2.0](https://github.com/IntelRealSense/librealsense/releases) first.
 
 ---
 
-## ⚙️ Configuration
+##  Configuration
 
 Edit parameters at the top of `my_camera_apriltag.py`:
 
@@ -133,7 +117,7 @@ detector = Detector(
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 AprilTag-ROS-2-camera/
@@ -149,7 +133,7 @@ AprilTag-ROS-2-camera/
 └── README.md
 ```
 
-### 🔧 Script Descriptions
+###  Script Descriptions
 
 #### 1️⃣ `my_camera_apriltag.py` - Multi-Tag Tracking & Mapping
 The **primary script** for real-time AprilTag detection and map frame construction.
@@ -193,7 +177,7 @@ A **validation tool** that verifies camera and tag positions against ground trut
 
 ## ▶️ Usage
 
-### 🗺️ Basic Multi-Tag Tracking
+###  Basic Multi-Tag Tracking
 1. **Connect** your Intel RealSense D435 camera
 2. **Navigate** to the scripts directory
    ```bash
@@ -205,7 +189,7 @@ A **validation tool** that verifies camera and tag positions against ground trut
    ```
 4. **Press Q** to exit and save map data to `apriltag_map.json`
 
-### 🎯 Camera Position Validation
+###  Camera Position Validation
 
 Verify that your camera and tags are correctly positioned:
 
@@ -239,7 +223,7 @@ python3 camera_position_validation.py
 **Terminal Output Example:**
 ```
 ==================================================================
-🎯 Camera Position Validation
+ Camera Position Validation
 ==================================================================
 Camera Position: [-0.0881,  0.0598, -0.5885] m
 Expected:        [-0.0880,  0.0600, -0.5890] m
@@ -263,7 +247,7 @@ Overall: ✓✓✓ ALL CHECKS PASSED ✓✓✓
 ==================================================================
 ```
 
-### 🤖 Hand-Eye Calibration Workflow
+###  Hand-Eye Calibration Workflow
 
 For robot arm integration, follow this two-step process:
 
@@ -362,31 +346,6 @@ When you exit (press Q), the program saves `apriltag_map.json`:
 
 ---
 
-## 🎓 Use Cases
-
-### 🗺️ Map Frame Construction
-- **Robot Localization**: Use tags as landmarks for navigation
-- **Multi-Robot Coordination**: Shared map frame for robot fleets
-- **Scene Understanding**: Build spatial maps of environments
-
-### 🤖 Hand-Eye Calibration
-- **Eye-in-Hand**: Camera mounted on robot end-effector
-- **Eye-to-Hand**: Camera fixed in workspace, observing robot
-- **Robot-Camera Registration**: Align camera and robot coordinate systems
-
-### ✅ Position Validation & Quality Assurance
-- **Setup Verification**: Confirm physical installation matches design specs
-- **Calibration Validation**: Verify camera mounting accuracy post-calibration
-- **Troubleshooting**: Diagnose positioning errors in multi-tag systems
-- **Quality Control**: Automated checks for production/research setups
-
-### 🎯 Additional Applications
-- **AR/VR Tracking**: Spatial tracking of multiple objects
-- **Object Pose Estimation**: 6DoF tracking in cluttered scenes
-- **Quality Inspection**: Precise part localization in manufacturing
-
----
-
 ## 🔧 Troubleshooting
 
 ### Camera Not Found
@@ -469,65 +428,10 @@ realsense-viewer
 | **SciPy** | 1.11+ |
 
 ---
+## ACKNOWLEDGEMENT
+The development of this library and the examples has been hugely inspired by the following sources:
 
-## 🙏 Credits
+- https://github.com/AprilRobotics/apriltag
+- https://github.com/swatbotics/apriltag
+- https://github.com/Tinker-Twins/AprilTag-ROS-2
 
-- **Original ROS 2 Framework**: [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2)
-- **AprilTag Library**: [AprilRobotics/apriltag](https://github.com/AprilRobotics/apriltag)
-- **Python Wrapper**: [duckietown/lib-dt-apriltags](https://github.com/duckietown/lib-dt-apriltags)
-- **Extended & Adapted by**: [@dddcccgw](https://github.com/dddcccgw)
-
----
-
-## 📄 License
-
-Released under the **MIT License**. Please also respect the licenses of:
-- [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2)
-- [AprilTag original library](https://april.eecs.umich.edu/software/apriltag)
-
----
-
-## 👨‍💻 Author
-
-**David Chen**  
-📧 gwchen24@gmail.com  
-💼 [github.com/dddcccgw](https://github.com/dddcccgw)
-
----
-
-## ⭐ Support This Project
-
-If this project helps you, please star:
-- ⭐ [Tinker-Twins/AprilTag-ROS-2](https://github.com/Tinker-Twins/AprilTag-ROS-2) (original)
-- ⭐ [dddcccgw/AprilTag-ROS-2-camera](https://github.com/dddcccgw/AprilTag-ROS-2-camera) (this fork)
-
----
-
-## 🛠️ Future Enhancements
-
-### 🗺️ Multi-Tag Tracking
-- [ ] Multi-camera support for larger coverage
-- [ ] Bundle adjustment for improved accuracy
-- [ ] Real-time 3D map visualization (Matplotlib/RViz)
-- [ ] Tag persistence across frames (handle occlusions)
-- [ ] IMU fusion for better tracking stability
-
-### ✅ Position Validation
-- [ ] Automatic tolerance calculation from measurements
-- [ ] CSV export of validation results for record-keeping
-- [ ] Historical validation tracking (compare runs over time)
-- [ ] Support for dynamic tolerance based on distance
-
-### 🤖 Hand-Eye Calibration
-- [ ] Automated calibration solver integration (OpenCV/Easy-HandEye)
-- [ ] Real-time calibration quality metrics
-- [ ] Robot pose auto-capture with motion planning
-- [ ] Support for multiple robot arms
-
-### 🌐 Integration
-- [ ] ROS 2 bridge for hybrid systems
-- [ ] Web interface for remote monitoring
-- [ ] REST API for external applications
-- [ ] Docker containerization
-
-**Contributions welcome!** Feel free to open issues or pull requests.
