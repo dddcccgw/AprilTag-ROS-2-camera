@@ -9,6 +9,7 @@ A standalone Python implementation for **multi-AprilTag detection**, **6DoF pose
 
 ### 🔧 Physical Setup
 ![Physical Setup](setup.png)
+
 *Hardware configuration showing Intel RealSense D435 camera mounted on tripod with three AprilTags (ID: 0, 1, 2) mounted on a vertical board with grid paper for precise positioning*
 
 ---
@@ -30,9 +31,10 @@ A standalone Python implementation for **multi-AprilTag detection**, **6DoF pose
 ---
 
 ###  Program: `record_calibration_data.py` - Hand-Eye Calibration
-![Calibration Data Recording](record_calibration_data.png)
-
+![Calibration Data Recording](record_calibration_data_1.png)
 *Interactive hand-eye calibration data collection showing synchronized camera-tag poses and robot end-effector positions for computing camera-to-robot transformation*
+
+![Calibration Data Recording](record_calibration_data.png)
 
 ---
 
